@@ -1,0 +1,76 @@
+# ============================================
+# SHADOW CATCHER - .gitattributes
+# ============================================
+
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# ───────────────────────────────────────────
+# SOURCE CODE - Force LF
+# ───────────────────────────────────────────
+*.dart     text eol=lf
+*.rs       text eol=lf
+*.py       text eol=lf
+*.toml     text eol=lf
+*.yaml     text eol=lf
+*.yml      text eol=lf
+*.json     text eol=lf
+*.md       text eol=lf
+*.txt      text eol=lf
+*.sh       text eol=lf
+*.gitignore text eol=lf
+
+# ───────────────────────────────────────────
+# WINDOWS FILES - Force CRLF
+# ───────────────────────────────────────────
+*.bat      text eol=crlf
+*.cmd      text eol=crlf
+*.ps1      text eol=crlf
+*.rc       text eol=crlf
+
+# ───────────────────────────────────────────
+# C / C++ FILES
+# ───────────────────────────────────────────
+*.cpp      text eol=lf
+*.cc       text eol=lf
+*.h        text eol=lf
+*.c        text eol=lf
+
+# ───────────────────────────────────────────
+# BINARY FILES - No line ending conversion
+# ───────────────────────────────────────────
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.ico      binary
+*.svg      binary
+*.onnx     binary
+*.apk      binary
+*.exe      binary
+*.dll      binary
+*.so       binary
+*.dylib    binary
+*.zip      binary
+*.tar      binary
+*.gz       binary
+*.7z       binary
+*.rar      binary
+*.pdf      binary
+*.ttf      binary
+*.otf      binary
+*.woff     binary
+*.woff2    binary
+
+# ───────────────────────────────────────────
+# LINGUIST OVERRIDES (GitHub language stats)
+# ───────────────────────────────────────────
+*.dart     linguist-language=Dart
+*.rs       linguist-language=Rust
+*.py       linguist-language=Python
+
+# Exclude from language stats
+frontend/android/**    linguist-vendored
+frontend/windows/**    linguist-vendored
+frontend/linux/**      linguist-vendored
+frontend/ios/**        linguist-vendored
