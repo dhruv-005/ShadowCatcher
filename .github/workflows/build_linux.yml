@@ -1,0 +1,70 @@
+name: Build Linux
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang cmake ninja-build pkg-config \
+            libgtk-3-dev liblzma-dev libstdc++-12-dev \
+            libglib2.0-dev libpango1.0-dev \
+            libatk1.0-dev libgdk-pixbuf2.0-dev \
+            libsoup2.4-dev libjavascriptcoregtk-4.0-dev \
+            libwebkit2gtk-4.0-dev ffmpeg libavcodec-dev
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build Rust Core
+        run: |
+          cd native_core
+          cargo build --release
+
+      - name: Run Rust tests
+        run: |
+          cd native_core
+          cargo test
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+          channel: 'stable'
+
+      - name: Enable Linux desktop
+        run: flutter config --enable-linux-desktop
+
+      - name: Get Flutter dependencies
+        run: |
+          cd frontend
+          flutter pub get
+
+      - name: Run Flutter tests
+        run: |
+          cd frontend
+          flutter test
+
+      - name: Build Linux app
+        run: |
+          cd frontend
+          flutter build linux --release
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: shadow-catcher-linux
+          path: frontend/build/linux/x64/release/bundle/
+          retention-days: 30
