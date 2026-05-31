@@ -1,0 +1,184 @@
+[package]
+name = "shadow_catcher_core"
+version = "1.0.0"
+edition = "2021"
+authors = ["Shadow Catcher Contributors"]
+description = "Native Rust core engine for Shadow Catcher"
+license = "MIT"
+repository = "https://github.com/yourusername/shadow_catcher"
+readme = "README.md"
+keywords = ["security", "malware", "detection", "downloader"]
+categories = ["network-programming", "multimedia"]
+
+# ─────────────────────────────────────────
+# BINARY TARGETS
+# ─────────────────────────────────────────
+
+[[bin]]
+name = "shadow_core"
+path = "src/main.rs"
+required-features = ["cli"]
+
+# ─────────────────────────────────────────
+# LIBRARY TARGET
+# ─────────────────────────────────────────
+
+[lib]
+name = "shadow_core"
+crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"
+
+# ─────────────────────────────────────────
+# FEATURES
+# ─────────────────────────────────────────
+
+[features]
+default = ["tls", "compression"]
+cli = ["clap"]
+tls = ["rustls", "rustls-native-certs"]
+compression = ["flate2", "bzip2"]
+gpu = []
+
+# ─────────────────────────────────────────
+# DEPENDENCIES
+# ─────────────────────────────────────────
+
+[dependencies]
+
+# ── Async Runtime ──
+tokio = { version = "1.36", features = [
+    "full",
+    "rt-multi-thread",
+    "macros",
+    "sync",
+    "time",
+    "fs",
+    "net",
+    "io-util",
+]}
+tokio-util = { version = "0.7", features = ["codec", "io"] }
+futures = "0.3"
+async-trait = "0.1"
+
+# ── Networking ──
+reqwest = { version = "0.11", features = [
+    "stream",
+    "json",
+    "rustls-tls",
+    "gzip",
+    "brotli",
+    "deflate",
+]}
+hyper = { version = "1.0", features = ["full"] }
+url = "2.5"
+bytes = "1.5"
+
+# ── TLS ──
+rustls = { version = "0.22", optional = true }
+rustls-native-certs = { version = "0.7", optional = true }
+
+# ── Serialization ──
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# ── AI / ONNX ──
+ort = { version = "1.17", features = [
+    "copy-dylibs",
+    "load-dynamic",
+]}
+ndarray = "0.15"
+
+# ── Compression ──
+flate2 = { version = "1.0", optional = true }
+bzip2 = { version = "0.4", optional = true }
+
+# ── FFmpeg / Media ──
+ffmpeg-next = "6.1"
+
+# ── Cryptography / Hashing ──
+sha2 = "0.10"
+md-5 = "0.10"
+hex = "0.4"
+ring = "0.17"
+
+# ── System Info ──
+sysinfo = "0.30"
+num_cpus = "1.16"
+
+# ── Logging ──
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = [
+    "env-filter",
+    "json",
+    "fmt",
+]}
+tracing-appender = "0.2"
+
+# ── Error Handling ──
+thiserror = "1.0"
+anyhow = "1.0"
+
+# ── Utilities ──
+uuid = { version = "1.7", features = ["v4", "fast-rng"] }
+chrono = { version = "0.4", features = ["serde"] }
+regex = "1.10"
+once_cell = "1.19"
+parking_lot = "0.12"
+dashmap = "5.5"
+crossbeam-channel = "0.5"
+rayon = "1.8"
+
+# ── CLI (optional) ──
+clap = { version = "4.5", features = ["derive"], optional = true }
+
+# ── FFI / Flutter Bridge ──
+flutter_rust_bridge = "2.0"
+
+# ─────────────────────────────────────────
+# DEV DEPENDENCIES
+# ─────────────────────────────────────────
+
+[dev-dependencies]
+tokio-test = "0.4"
+tempfile = "3.10"
+mockall = "0.12"
+criterion = { version = "0.5", features = ["async_tokio"] }
+proptest = "1.4"
+fake = { version = "2.9", features = ["derive"] }
+wiremock = "0.6"
+
+# ─────────────────────────────────────────
+# BUILD PROFILES
+# ─────────────────────────────────────────
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.bench]
+opt-level = 3
+debug = false
+
+# ─────────────────────────────────────────
+# BENCHMARK TARGETS
+# ─────────────────────────────────────────
+
+[[bench]]
+name = "bench_triage"
+harness = false
+
+[[bench]]
+name = "bench_stream_cleaner"
+harness = false
+
+[[bench]]
+name = "bench_throughput"
+harness = false
