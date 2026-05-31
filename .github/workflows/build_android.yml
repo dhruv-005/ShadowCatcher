@@ -1,0 +1,65 @@
+name: Build Android
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android,armv7-linux-androideabi,x86_64-linux-android
+
+      - name: Install Android NDK
+        run: |
+          sudo apt-get install -y android-sdk
+          echo "ANDROID_NDK_HOME=$ANDROID_NDK_HOME" >> $GITHUB_ENV
+
+      - name: Build Rust Core for Android
+        run: |
+          cd native_core
+          cargo build --release --target aarch64-linux-android
+          cargo build --release --target armv7-linux-androideabi
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+          channel: 'stable'
+
+      - name: Get Flutter dependencies
+        run: |
+          cd frontend
+          flutter pub get
+
+      - name: Run Flutter tests
+        run: |
+          cd frontend
+          flutter test
+
+      - name: Build APK
+        run: |
+          cd frontend
+          flutter build apk --release --split-per-abi
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: shadow-catcher-android
+          path: frontend/build/app/outputs/flutter-apk/*.apk
+          retention-days: 30
