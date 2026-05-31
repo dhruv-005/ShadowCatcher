@@ -1,0 +1,168 @@
+# ============================================
+# SHADOW CATCHER - .gitignore
+# ============================================
+
+# ───────────────────────────────────────────
+# PYTHON / AI TRAINING
+# ───────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytest_cache/
+.hypothesis/
+*.ipynb_checkpoints
+.jupyter/
+jupyter_notebook_config.py
+
+# AI Outputs (large files - do not commit)
+ai_training/outputs/checkpoints/*
+ai_training/outputs/logs/*
+ai_training/outputs/exported/*
+!ai_training/outputs/checkpoints/.gitkeep
+!ai_training/outputs/logs/.gitkeep
+!ai_training/outputs/exported/.gitkeep
+
+# Dataset samples (too large for git)
+ai_training/datasets/benign/samples/*
+ai_training/datasets/malicious/samples/*
+!ai_training/datasets/benign/samples/.gitkeep
+!ai_training/datasets/malicious/samples/.gitkeep
+
+# ONNX model (managed separately)
+# frontend/assets/ai/shadow_brain.onnx
+
+# ───────────────────────────────────────────
+# RUST / NATIVE CORE
+# ───────────────────────────────────────────
+native_core/target/
+native_core/Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# ───────────────────────────────────────────
+# FLUTTER / DART
+# ───────────────────────────────────────────
+frontend/.dart_tool/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/.pub-cache/
+frontend/.pub/
+frontend/build/
+frontend/pubspec.lock
+
+# Generated files
+frontend/lib/generated/
+*.g.dart
+*.freezed.dart
+*.mocks.dart
+
+# Android
+frontend/android/.gradle/
+frontend/android/local.properties
+frontend/android/key.properties
+frontend/android/app/debug/
+frontend/android/app/profile/
+frontend/android/app/release/
+*.jks
+*.keystore
+
+# Windows
+frontend/windows/flutter/generated_plugin_registrant.cc
+frontend/windows/flutter/generated_plugin_registrant.h
+frontend/windows/flutter/generated_plugins.cmake
+
+# Linux
+frontend/linux/flutter/generated_plugin_registrant.cc
+frontend/linux/flutter/generated_plugin_registrant.h
+frontend/linux/flutter/generated_plugins.cmake
+
+# ───────────────────────────────────────────
+# IDE / EDITORS
+# ───────────────────────────────────────────
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ───────────────────────────────────────────
+# OS FILES
+# ───────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ───────────────────────────────────────────
+# SECURITY / SECRETS
+# ───────────────────────────────────────────
+*.pem
+*.key
+*.cert
+*.p12
+*.pfx
+.env
+.env.*
+secrets.json
+secrets.yaml
+config.local.json
+
+# ───────────────────────────────────────────
+# LOGS & TEMP
+# ───────────────────────────────────────────
+*.log
+*.tmp
+*.temp
+*.bak
+*.backup
+crash-reports/
