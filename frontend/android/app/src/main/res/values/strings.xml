@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Shadow Catcher - String Resources
+-->
+<resources>
+
+    <!-- App Identity -->
+    <string name="app_name">Shadow Catcher</string>
+    <string name="app_description">AI-Powered Download Shield</string>
+    <string name="app_version">1.0.0</string>
+
+    <!-- Notifications -->
+    <string name="notif_channel_downloads">Downloads</string>
+    <string name="notif_channel_threats">Threat Alerts</string>
+    <string name="notif_channel_desc_downloads">Download progress notifications</string>
+    <string name="notif_channel_desc_threats">Malware threat alert notifications</string>
+
+    <!-- Notification Messages -->
+    <string name="notif_download_start">Download started</string>
+    <string name="notif_download_complete">Download complete</string>
+    <string name="notif_download_failed">Download failed</string>
+    <string name="notif_threat_detected">⚠️ Threat Detected!</string>
+    <string name="notif_threat_blocked">🛡️ Threat Blocked</string>
+    <string name="notif_scan_clean">✅ File is Clean</string>
+
+    <!-- Permissions -->
+    <string name="perm_internet">Internet access for downloads</string>
+    <string name="perm_storage">Storage access to save files</string>
+    <string name="perm_notification">Notifications for download status</string>
+
+    <!-- Errors -->
+    <string name="error_network">Network connection failed</string>
+    <string name="error_storage">Storage permission required</string>
+    <string name="error_scan_failed">Scan could not complete</string>
+    <string name="error_download_failed">Download failed. Please retry.</string>
+
+    <!-- Actions -->
+    <string name="action_retry">Retry</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_dismiss">Dismiss</string>
+    <string name="action_view">View</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_open">Open</string>
+
+    <!-- Shield Status -->
+    <string name="shield_active">Shield Active</string>
+    <string name="shield_inactive">Shield Inactive</string>
+    <string name="shield_scanning">Scanning…</string>
+
+</resources>

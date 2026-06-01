@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Shadow Catcher - App Styles & Themes
+-->
+<resources>
+
+    <!--
+        Base App Theme
+        Flutter manages its own rendering so we use a minimal
+        theme that just sets the launch background
+    -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
+
+        <!-- Launch screen background while Flutter loads -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+
+        <!-- Status bar styling -->
+        <item name="android:statusBarColor">#1A1A2E</item>
+        <item name="android:navigationBarColor">#1A1A2E</item>
+
+        <!-- Edge to edge -->
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+
+    </style>
+
+    <!--
+        Normal Theme applied after Flutter engine loads
+    -->
+    <style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
+
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:statusBarColor">#1A1A2E</item>
+        <item name="android:navigationBarColor">#1A1A2E</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+
+    </style>
+
+</resources>
