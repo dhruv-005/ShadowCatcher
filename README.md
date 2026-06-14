@@ -1,12 +1,14 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:1A1F35,100:0D0D0D&height=200&section=header&text=ShadowCatcher&fontSize=80&fontColor=ffffff&fontAlignY=38&desc=Real-Time%20Stream%20Security%20%26%20Intelligent%20Download%20Manager&descAlignY=60&descSize=22&animation=fadeIn" width="100%"/>
+<div align="center">
 
-# ⚡ Where Every Byte Is Inspected Before It Lands ⚡
+# ⚡ ShadowCatcher ⚡
+
+### Real-Time Stream Security & Intelligent Download Manager
+
+# Where Every Byte Is Inspected Before It Lands
 
 ### *Intercept. Analyze. Disarm. Deliver.*
 
 <br/>
-
-<div align="center">
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/dhruv-005/ShadowCatcher/build_release.yml?branch=main&style=for-the-badge&logo=github&logoColor=white&color=2ea043)](https://github.com/dhruv-005/ShadowCatcher/actions)
 [![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20Windows%20%7C%20Linux%20%7C%20iOS-blue?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
@@ -252,7 +254,7 @@ ShadowCatcher uses a clean three-layer monorepo architecture:
 │       ↓               ↓               ↓                     │
 │  URL capture   Progress display   Clean playback            │
 │                                                             │
-│  native.dart ← flutter_rust_bridge → Rust API              │
+│  native.dart ← flutter_rust_bridge → Rust API               │
 └─────────────────────┬───────────────────────────────────────┘
                       │ C FFI Bridge
                       ↓
@@ -279,7 +281,7 @@ ShadowCatcher uses a clean three-layer monorepo architecture:
 │    Output: P(benign) · P(malicious)                         │
 │    Speed:  < 10ms inference on any modern phone             │
 │                                                             │
-│  Trained by: ai_training/ Python pipeline (PyTorch)        │
+│  Trained by: ai_training/ Python pipeline (PyTorch)         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -806,7 +808,7 @@ We respond within **48 hours** and patch within **7 days** for confirmed vulnera
 ```
 MIT License
 
-Copyright (c) 2024 ShadowCatcher Contributors
+Copyright (c) 2026 ShadowCatcher Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -849,7 +851,7 @@ SOFTWARE.
 
 <div align="center">
 
-**Built with passion for the users who need it most.**
+## Built With Passion For The Users Who Need It Most
 
 *ShadowCatcher — Save the data. Kill the virus. Stream it clean.*
 
@@ -860,5 +862,3 @@ SOFTWARE.
 [![GitHub Issues](https://img.shields.io/github/issues/dhruv-005/ShadowCatcher?style=for-the-badge&logo=github)](https://github.com/dhruv-005/ShadowCatcher/issues)
 
 </div>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D0D0D,50:1A1F35,100:0D1117&height=100&section=footer" width="100%"/>
